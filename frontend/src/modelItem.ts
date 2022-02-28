@@ -5,6 +5,7 @@ export interface Todo{
     status: string;
 }
 
-export interface Response {
-    results : Array<Todo>
+export enum Status {
+    Open ='Open',
+    Done ='Done'
 }
