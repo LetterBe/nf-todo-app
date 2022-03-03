@@ -12,7 +12,7 @@ export default function TodoItem (props:TodoItemProps) {
 
 
     const deleteTodo = () => {
-        fetch(`http://localhost:8080/todos/${props.todo.id}`,
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.id}`,
             {method: 'DELETE'})
             .then(() => props.onTodoDelete());
     };
@@ -20,7 +20,7 @@ export default function TodoItem (props:TodoItemProps) {
     const toggle = () => {
         const newStatus  = props.todo.status === Status.Open ? Status.Done : Status.Open;
 
-        fetch(`http://localhost:8080/todos/${props.todo.id}`,
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.id}`,
             {method: 'PUT',
             headers:{
                 'Content-Type': 'application/json'
