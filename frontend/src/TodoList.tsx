@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './TodoItem'
 import {Todo} from "./modelItem";
-import TodoItem from "./TodoItem";
 import './TodoForm';
 import TodoForm from "./TodoForm";
+import TodoItem from "./TodoItem";
+
 
 
 export default function TodoList() {
@@ -11,7 +12,7 @@ export default function TodoList() {
 
 
     const fetchAll = () => {
-        fetch('http://localhost:8080/todos')
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
             .then(response => response.json())
             .then ((todosFromBackend: Todo[]) => setTodos(todosFromBackend));
     }
@@ -31,5 +32,4 @@ export default function TodoList() {
             </div>
 
         );
-    }
-
+  };
