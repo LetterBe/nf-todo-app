@@ -24,7 +24,7 @@ export default function TodoList() {
             .catch ((e: Error) => setErrorMessage(e.message))
     };
     const deleteChecked = () => {
-        fetch('${process.env.REACT_APP_BASE_URL}/todos',
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos`,
             {method:'DELETE'})
             .then(response => response.json())
             .then((todosFromBackend : Todo[]) => setTodos(todosFromBackend));
