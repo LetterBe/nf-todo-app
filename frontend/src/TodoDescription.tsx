@@ -11,7 +11,7 @@ export default function TodoDescription() {
     fetch(process.env.REACT_APP_BASE_URL+ "/todos/"+params.id)
         .then(response => response.json())
         .then((todo : Todo) => setTodo(todo))
-}, []);
+}, [params.id]);
 
 
     return(
