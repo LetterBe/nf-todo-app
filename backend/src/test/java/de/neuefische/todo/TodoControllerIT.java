@@ -21,7 +21,7 @@ public class TodoControllerIT {
         // Erstes TodoItem erstellen
         Todo todo1 = new Todo("lernen");
 
-        ResponseEntity<Todo[]> response1 = restTemplate.postForEntity("/todos", todo1, Todo[].class);
+        ResponseEntity<Todo[]> response1 = restTemplate.postForEntity("/api/todos", todo1, Todo[].class);
 
         assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         Assertions.assertThat(response1.getBody()[0].getTask()).isEqualTo("lernen");
@@ -30,14 +30,14 @@ public class TodoControllerIT {
         // Zweites TodoItem erstellen
         Todo todo2 = new Todo("tanzen");
 
-        ResponseEntity<Todo[]> response2 = restTemplate.postForEntity("/todos", todo2, Todo[].class);
+        ResponseEntity<Todo[]> response2 = restTemplate.postForEntity("/api/todos", todo2, Todo[].class);
 
         assertThat(response2.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         Assertions.assertThat(response2.getBody()[1].getTask()).isEqualTo("tanzen");
 
         // Erstes TodoItem löschen
-        restTemplate.delete("/todos/" + todo1.getId());
-        ResponseEntity<Todo[]> response3 = restTemplate.getForEntity("/todos", Todo[].class);
+        restTemplate.delete("/api/todos/" + todo1.getId());
+        ResponseEntity<Todo[]> response3 = restTemplate.getForEntity("/api/todos", Todo[].class);
 
         assertThat(response3.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(response3.getBody()[0].getTask()).isEqualTo("lernen");
@@ -49,8 +49,8 @@ public class TodoControllerIT {
         todoWithChanges.setDescription(todo2.getDescription());
         todoWithChanges.setStatus(todo2.getStatus());
 
-        restTemplate.put("/todos/" + todo2.getId(), todoWithChanges);
-        ResponseEntity<Todo[]> response4 = restTemplate.getForEntity("/todos" , Todo[].class);
+        restTemplate.put("/api/todos/" + todo2.getId(), todoWithChanges);
+        ResponseEntity<Todo[]> response4 = restTemplate.getForEntity("/api/todos" , Todo[].class);
 
         assertThat(response4.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(response4.getBody()).containsExactlyInAnyOrder(todoWithChanges);
