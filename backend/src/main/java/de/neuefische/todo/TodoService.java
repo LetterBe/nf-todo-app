@@ -49,4 +49,12 @@ public class TodoService {
         }
 
     }
+   public void deleteCheckedTodos() {
+        todoRepository.findAll()
+                .stream()
+                .filter(todo -> todo.getStatus() == TodoStatus.Done)
+                .toList()
+                .forEach(todo -> todoRepository.delete(todo));
+   }
 }
+

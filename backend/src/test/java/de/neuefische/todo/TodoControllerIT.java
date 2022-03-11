@@ -19,32 +19,33 @@ public class TodoControllerIT {
     @Test
     void integrationTest() {
         // Erstes TodoItem erstellen
-        Todo todo1 = new Todo("Tests schreiben");
+        Todo todo1 = new Todo("lernen");
 
         ResponseEntity<Todo[]> response1 = restTemplate.postForEntity("/todos", todo1, Todo[].class);
 
         assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        Assertions.assertThat(response1.getBody()).containsExactlyInAnyOrder(todo1);
+        Assertions.assertThat(response1.getBody()[0].getTask()).isEqualTo("lernen");
+        Assertions.assertThat(response1.getBody()[0].getId() !=null);
 
         // Zweites TodoItem erstellen
-        Todo todo2 = new Todo("TypeScript lernen");
+        Todo todo2 = new Todo("tanzen");
 
         ResponseEntity<Todo[]> response2 = restTemplate.postForEntity("/todos", todo2, Todo[].class);
 
         assertThat(response2.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        Assertions.assertThat(response2.getBody()).containsExactlyInAnyOrder(todo1, todo2);
+        Assertions.assertThat(response2.getBody()[1].getTask()).isEqualTo("tanzen");
 
         // Erstes TodoItem löschen
         restTemplate.delete("/todos/" + todo1.getId());
-        ResponseEntity<Todo[]> response3 = restTemplate.getForEntity("/todos" , Todo[].class);
+        ResponseEntity<Todo[]> response3 = restTemplate.getForEntity("/todos", Todo[].class);
 
         assertThat(response3.getStatusCode()).isEqualTo(HttpStatus.OK);
-        Assertions.assertThat(response3.getBody()).containsExactlyInAnyOrder(todo2);
+        Assertions.assertThat(response3.getBody()[0].getTask()).isEqualTo("lernen");
 
         // Zweites TodoItem ändern
         Todo todoWithChanges = new Todo();
         todoWithChanges.setId(todo2.getId());
-        todoWithChanges.setTask("TypeScript verstehen");
+        todoWithChanges.setTask("tanzen");
         todoWithChanges.setDescription(todo2.getDescription());
         todoWithChanges.setStatus(todo2.getStatus());
 
