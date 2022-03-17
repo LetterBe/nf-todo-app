@@ -1,0 +1,10 @@
+.fields{
+ display: grid;
+ row-gap: 5px;
+}
+
+#btn1 {
+ width: 20%;
+ margin-left: 100px;
+ border-bottom-color: darkslateblue;
+}
