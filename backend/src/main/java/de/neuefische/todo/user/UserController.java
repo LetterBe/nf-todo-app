@@ -1,4 +1,4 @@
-package user;
+package de.neuefische.todo.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

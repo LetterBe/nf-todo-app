@@ -1,4 +1,4 @@
-package login;
+package de.neuefische.todo.login;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

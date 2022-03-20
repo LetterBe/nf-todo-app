@@ -1,4 +1,4 @@
-package user;
+package de.neuefische.todo.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ public class UserService {
     }
 
     public Optional<UserDocument> findByEmail(String username) {
-        return userRepository.findbyEmail(username);
+        return userRepository.findByEmail(username);
     }
 }

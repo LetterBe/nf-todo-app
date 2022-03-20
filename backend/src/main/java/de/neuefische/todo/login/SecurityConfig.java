@@ -1,4 +1,4 @@
-package login;
+package de.neuefische.todo.login;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

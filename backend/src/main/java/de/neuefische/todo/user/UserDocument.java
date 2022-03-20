@@ -1,4 +1,4 @@
-package user;
+package de.neuefische.todo.user;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
