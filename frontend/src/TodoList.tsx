@@ -10,7 +10,6 @@ import './TodoList.css'
 export default function TodoList() {
     const [todos, setTodos] = useState([] as Todo[]);
     const [errorMessage, setErrorMessage] = useState('')
-    const [deleteErrorMessage, setDeleteErrorMessage] = useState('')
 
 
     const fetchAll = () => {
@@ -50,7 +49,7 @@ export default function TodoList() {
                                                            onTodoDelete={fetchAll}
                                                            onTodoChange={setTodos}/>
             </li>)}
-            <h2> {errorMessage}</h2> <h2>{deleteErrorMessage}</h2>
+            <h2> {errorMessage}</h2>
         </div>
     );
 };
