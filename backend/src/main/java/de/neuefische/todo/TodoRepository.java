@@ -1,5 +1,6 @@
 package de.neuefische.todo;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -7,7 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class TodoRepository {
+public interface TodoRepository extends MongoRepository<Todo, String> {
+
+}
+
+/*public class TodoRepository {
 
     private Map<String, Todo> todos = new HashMap<>();
 
@@ -26,4 +31,4 @@ public class TodoRepository {
     public void delete(String id) {
         todos.remove(id);
     }
-}
+}*/

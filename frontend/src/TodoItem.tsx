@@ -30,7 +30,7 @@ export default function TodoItem(props: TodoItemProps) {
     };
 
     const fetchToEdit = (todo: Todo) => {
-        fetch(`{process.env.REACT_APP_BASE_URL}/todos/${props.todo.id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,8 +47,8 @@ export default function TodoItem(props: TodoItemProps) {
     const editTodo = () => {
         fetchToEdit({
             id: props.todo.id,
-            task: props.todo.task,
-            description: props.todo.description,
+            task: taskToEdit,
+            description: descriptionToEdit,
             status: props.todo.status
         });
     }
@@ -88,11 +88,13 @@ export default function TodoItem(props: TodoItemProps) {
                     </div>
                     :
                     <div>
-                    <span className={props.todo.status === Status.Done ? 'selected' : ''}
+                    <span className={props.todo.status === Status.Done ? 'selectedTodos' : ''}
                           onClick={toggle}>{props.todo.task} - {props.todo.description}
                     </span>
-                        <button onClick={() => setEditMode(true)}>Edit</button>
-                        <button onClick={deleteTodo}>Erase</button>
+                        <div className='btns'>
+                        <button onClick={() => setEditMode(true)}>Edit 🖊️ </button>
+                        <button onClick={deleteTodo}>Delete 🗑️</button>
+                        </div>
                     </div>
             }
             <div>

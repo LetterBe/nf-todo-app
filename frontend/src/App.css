@@ -1,36 +1,5 @@
-.App{
-    background-color: antiquewhite;
-    font-family: Helvetica;
+html,body{
+background-color: darkseagreen;
+margin: 30px;
 
-}
-
-.fields{
-    color: darkslateblue;
-    width: 600px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-
-
-
-}
-
-#btn1{
-    border: 2px solid darkseagreen;
-    color: darkslateblue;
-    text-align: center;
-    font-family: American Typewriter;
-    width: 80px;
-    hight: 200px
-
-}
-
-#btn2{
-    border: 2px solid darkseagreen;
-    color: darkslateblue;
-    text-align: center;
-    font-family: American Typewriter;
-    width: 80px;
-    hight: 200px
 }

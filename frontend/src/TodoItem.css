@@ -1,4 +1,8 @@
-.selected {
-    text-decoration-line: line-through;
-    background-color: mistyrose;
+.selectedTodos{
+ text-decoration: line-through;
+ color: azure;
+}
+
+.btns{
+ padding-bottom: 10px;
 }

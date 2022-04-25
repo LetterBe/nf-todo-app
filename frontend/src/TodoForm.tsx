@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {Todo} from "./modelItem";
-import './App.css'
+import './TodoForm.css'
 
 interface TodoFormProps {
     onTodoCreation: (todos: Todo[]) => void;
@@ -35,8 +35,10 @@ interface TodoFormProps {
 
         return (
             <div className="fields">
+                <h5>Task</h5>
                 <input type="text" placeholder="Task" value={task}
                        onChange={ev => setTask(ev.target.value)} />
+                <h5>Describe it!</h5>
                 <input type="text" placeholder="Description" value={description}
                        onChange={ev => setDescription(ev.target.value)} />
                 <button id='btn1' onClick={addTask}>Send</button>
