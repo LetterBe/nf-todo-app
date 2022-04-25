@@ -30,23 +30,7 @@ export default function TodoList() {
             .then((todosFromBackend: Todo[]) => setTodos(todosFromBackend))
             .catch((e: Error) => setErrorMessage(e.message))
     };
-    const deleteChecked = () => {
-        const token = localStorage.getItem("token")
-        fetch(`${process.env.REACT_APP_BASE_URL}/todos`,
-            {method: 'DELETE',
-            headers: {
-                "Authorization": "Bearer" + token
-            }
-        })
-            .then(response => {
-                if (response.ok){
-                    return response.json()
-                }
-                throw new Error ('Nothing more to delete')
-            })
-            .then((todosFromBackend: Todo[]) => setTodos(todosFromBackend))
-            .catch(e => setDeleteErrorMessage(e.message))
-    }
+
 
 
     useEffect(() => {

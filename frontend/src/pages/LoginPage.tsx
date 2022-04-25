@@ -4,7 +4,6 @@ export default function LoginPage(){
 
     const [email, setEmail]= useState('')
     const [password, setPassword]= useState('')
-    const [token, setToken] = useState(localStorage.getItem("token"))
 
 
     const login = () => {
@@ -16,13 +15,18 @@ export default function LoginPage(){
             }),
             headers: {
             "Content-Type":"application/json",
-                "Authorization": "Bearer" + token
+                "Authorization": "Bearer"
             }
         })
             .then  (response => {
                 return response.text()
             })
-            .then((responseBody: string) => {localStorage.setItem("token", responseBody)})
+            .then((responseBody: string) => {
+                localStorage.setItem("token", responseBody)
+                localStorage.setItem("username", email)
+                setEmail("")
+                setPassword("")
+            })
     }
 
     return(
